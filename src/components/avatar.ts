@@ -1,4 +1,3 @@
-
 export function Avatar(): string {
   return `
     <figure data-animation="avatar" class="relative mb-3" style="opacity: 0;">

@@ -1,4 +1,3 @@
-
 import { Avatar } from './components/avatar';
 import { HeroText } from './components/heroText';
 import { LinkItem } from './components/linkItem';
@@ -15,9 +14,9 @@ export function App(): string {
           ${HeroText()}
 
           <nav data-animation="text-item" class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 text-2xl md:text-3xl" style="opacity: 0;">
-            ${LinkItem({ href: "#about", text: "Mais sobre mim" })}
-            ${LinkItem({ href: "#projects", text: "O que eu construí" })}
-            ${LinkItem({ href: "#contact", text: "Entre em contato" })}
+            ${LinkItem({ href: '#about', text: 'Mais sobre mim' })}
+            ${LinkItem({ href: '#projects', text: 'O que eu construí' })}
+            ${LinkItem({ href: '#contact', text: 'Entre em contato' })}
           </nav>
         </header>
       </div>
