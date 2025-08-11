@@ -1,69 +1,60 @@
-# React + TypeScript + Vite
+# JPHP - Portfólio de João Pedro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o repositório do meu portfólio pessoal, desenvolvido para apresentar minhas habilidades, projetos e experiência como desenvolvedor.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O projeto foi construído com as seguintes tecnologias:
 
-## Expanding the ESLint configuration
+-   **[React](https://react.dev/)**: Biblioteca para construção de interfaces de usuário.
+-   **[TypeScript](https://www.typescriptlang.org/)**: Superset de JavaScript que adiciona tipagem estática.
+-   **[Vite](https://vitejs.dev/)**: Ferramenta de build moderna e rápida.
+-   **[Tailwind CSS](https://tailwindcss.com/)**: Framework CSS utility-first para estilização.
+-   **[shadcn/ui](https://ui.shadcn.com/)**: Coleção de componentes de UI reutilizáveis.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 💻 Como Executar o Projeto
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Siga os passos abaixo para executar o projeto em seu ambiente local.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+**Pré-requisitos:**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+-   [Node.js](https://nodejs.org/en/) (versão 18 ou superior)
+-   [npm](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
+
+**Instalação:**
+
+1.  Clone o repositório:
+    ```bash
+    git clone https://github.com/seu-usuario/jphp.git
+    ```
+2.  Navegue até o diretório do projeto:
+    ```bash
+    cd jphp
+    ```
+3.  Instale as dependências:
+    ```bash
+    npm install
+    ```
+
+**Execução:**
+
+Para iniciar o servidor de desenvolvimento, execute o comando:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Abra [http://localhost:5173](http://localhost:5173) (ou a porta indicada no seu terminal) no seu navegador para ver o resultado.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📜 Scripts Disponíveis
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+No diretório do projeto, você pode executar os seguintes scripts:
+
+-   `npm run dev`: Inicia o servidor de desenvolvimento.
+-   `npm run build`: Compila o projeto para produção.
+-   `npm run lint`: Executa o linter para análise de código.
+-   `npm run preview`: Inicia um servidor local para visualizar a build de produção.
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
