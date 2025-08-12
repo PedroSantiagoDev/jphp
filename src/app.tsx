@@ -11,7 +11,7 @@ import {
 } from "./components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
 import { Badge } from "./components/ui/badge";
-import { Card, CardContent, CardFooter } from "./components/ui/card";
+import { Card, CardContent } from "./components/ui/card";
 
 export function App() {
   return (
