@@ -1,5 +1,4 @@
 import { Background } from "./components/background";
-import { CarouselSize } from "./components/carousel-size";
 import { Github } from "lucide-react";
 import { Logo } from "./components/logo";
 import { ThemeToggle } from "./components/theme-toggle";
@@ -11,7 +10,31 @@ import {
 } from "./components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
 import { Badge } from "./components/ui/badge";
-import { Card, CardContent } from "./components/ui/card";
+import { CarouselCard } from "./components/carousel-card";
+
+const projects = [
+  {
+    href: "https://google.com.br",
+    title: "RESTful API with Java and Spring Boot",
+    description: "RESTful API for a hotel management system",
+    img: "/placeholder.svg",
+    tags: ["Java", "Spring Boot", "RESTful", "API"],
+  },
+  {
+    href: "https://google.com.br",
+    title: "Authentication with Spring Security and JWT",
+    description: "Authentication and authorization system",
+    img: "/placeholder.svg",
+    tags: ["Java", "Spring Security", "JWT"],
+  },
+  {
+    href: "https://google.com.br",
+    title: "Real-Time Chat with Spring WebSocket",
+    description: "Real-time chat application",
+    img: "/placeholder.svg",
+    tags: ["Java", "Spring Boot", "WebSocket"],
+  },
+];
 
 export function App() {
   return (
@@ -163,7 +186,7 @@ export function App() {
                   Projetos Recentes
                 </h2>
 
-                <CarouselSize />
+                <CarouselCard projects={projects} />
               </div>
             </section>
 
@@ -172,14 +195,17 @@ export function App() {
                 <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
                   Tecnologias
                 </h2>
-                <div className="grid grid-cols-3 gap-2 sm:grid-cols-6 md:grid-cols-7">
+                <div className="grid grid-cols-4 gap-1 sm:grid-cols-6 md:grid-cols-7">
                   {Array.from({ length: 7 }).map((_, index) => (
-                    <Card key={index} className="w-24 h-24 sm:w-20 md:w-28">
-                      <CardContent className="flex gap-2 flex-col items-center">
-                        <Github />
-                        <span>GitHub</span>
-                      </CardContent>
-                    </Card>
+                    <div
+                      key={index}
+                      className="border shadow overflow-hidden rounded-md border-zinc-200 bg-zinc-100/30 transition-colors backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/30"
+                    >
+                      <div className="group flex aspect-square select-none flex-col items-center justify-center p-2">
+                        <Github className="group-hover:-translate-y-1 size-8 transition-all duration-300" />
+                        <span className="mt-3 text-xs">GitHub</span>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
