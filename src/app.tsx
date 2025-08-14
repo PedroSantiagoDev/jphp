@@ -9,8 +9,21 @@ import {
   AccordionTrigger,
 } from "./components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
-import { Badge } from "./components/ui/badge";
 import { CarouselCard } from "./components/carousel-card";
+import { ExperienceCard } from "./components/experience-card";
+
+const experience = [
+  {
+    title: "Bolsista - Jovem Tech",
+    time: "2025 - Atual",
+    pathLogo: "/logo/pulse.jpeg",
+    enterprise: "Pulse",
+    model: "Presencia",
+    description:
+      "Aprendizado contínuo com cursos de hard e soft skills (comunicação, trabalho em equipe, resolução de problemas), com estudo e aplicação de Java, Spring Boot e desenvolvimento de APIs RESTful em projetos reais. Introdução ao desenvolvimento front-end com HTML, CSS e JavaScript, criando páginas dinâmicas, e contato direto com metodologias ágeis e boas práticas de codificação em um projeto realizado em parceria com o Governo do Maranhão, Fapema, Emap, Grupo Mateus, Suzano, Tegram, Copi e Secti.",
+    stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
+  },
+];
 
 const projects = [
   {
@@ -22,7 +35,7 @@ const projects = [
   },
   {
     href: "https://google.com.br",
-    title: "Authentication with Spring Security and JWT",
+    title: "CodeLink",
     description: "Authentication and authorization system",
     img: "/placeholder.svg",
     tags: ["Java", "Spring Security", "JWT"],
@@ -40,7 +53,7 @@ export function App() {
   return (
     <div className="min-h-screen overflow-hidden relative">
       <Background />
-      <div className="m-auto max-w-4xl">
+      <div className="m-auto max-w-5xl">
         <header className="p-2">
           <div className="flex justify-between items-center">
             <Logo name="JPHP" />
@@ -73,106 +86,26 @@ export function App() {
             <section>
               <div>
                 <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
-                  atualmente
+                  Atualmente
                 </h2>
-                <div className="flex justify-between items-start mb-1">
-                  <div className="mb-2">
-                    <h3 className="text-md md:text-2xl font-bold bg-gradient-to-br from-black from-30% to-black/50 dark:from-white dark:from-30% dark:to-white/50 bg-clip-text text-transparent">
-                      Bolsista - Jovem Tech
-                    </h3>
-                    <p className="text-xs font-normal uppercase tracking-wider">
-                      2025 - Atual
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <div className="flex items-center gap-2">
-                      <img
-                        className="w-5 h-5 rounded"
-                        alt="logo da empresa"
-                        src="/logo/pulse.jpeg"
-                      />
-                      <span className="text-sm font-normal text-black-400 dark:text-black-400">
-                        Pulse
-                      </span>
-                    </div>
-                    <p className="text-sm">Presencial</p>
-                  </div>
-                </div>
-                <p className="text-xs font-semibold mb-2">
-                  Aprendizado contínuo com cursos de hard skills e soft skills
-                  (comunicação, trabalho em equipe, resolução de problemas).
-                  <br />
-                  - Estudo e aplicação de Java, Spring Boot e desenvolvimento de
-                  APIs RESTful em projetos reais.
-                  <br />
-                  - Introdução ao desenvolvimento front-end com HTML, CSS e
-                  JavaScript, criando páginas dinâmicas.
-                  <br />
-                  - Contato direto com metodologias ágeis e boas práticas de
-                  codificação.
-                  <br /> - Projeto realizado em parceria com o Governo do
-                  Maranhão, Fapema, Emap, Grupo Mateus, Suzano, Tegram, Copi e
-                  Secti.
-                </p>
-                <div className="flex gap-2">
-                  <Badge variant="secondary">HTML</Badge>
-                  <Badge variant="secondary">CSS</Badge>
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">Java</Badge>
-                  <Badge variant="secondary">Spring Boot</Badge>
-                  <Badge variant="secondary">SQL</Badge>
-                </div>
+                <article>
+                  {experience.map((exp) => (
+                    <ExperienceCard key={exp.title} experience={exp} />
+                  ))}
+                </article>
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
                     <AccordionTrigger>Cargos anteriores</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="flex justify-between items-start mb-1">
-                        <div className="mb-2">
-                          <h3 className="text-md md:text-2xl font-bold bg-gradient-to-br from-black from-30% to-black/50 dark:from-white dark:from-30% dark:to-white/50 bg-clip-text text-transparent">
-                            Bolsista - Jovem Tech
-                          </h3>
-                          <p className="text-xs font-normal uppercase tracking-wider">
-                            2025 - Atual
-                          </p>
-                        </div>
-                        <div className="text-right">
-                          <div className="flex items-center gap-2">
-                            <img
-                              className="w-5 h-5 rounded"
-                              alt="logo da empresa"
-                              src="/logo/pulse.jpeg"
-                            />
-                            <span className="text-sm font-normal text-black-400 dark:text-black-400">
-                              Pulse
-                            </span>
-                          </div>
-                          <p className="text-sm">Presencial</p>
-                        </div>
+                    <AccordionContent className="space-y-2">
+                      <div>
+                        {experience.map((exp) => (
+                          <ExperienceCard key={exp.title} experience={exp} />
+                        ))}
                       </div>
-                      <p className="text-xs font-semibold mb-2">
-                        Aprendizado contínuo com cursos de hard skills e soft
-                        skills (comunicação, trabalho em equipe, resolução de
-                        problemas).
-                        <br />
-                        - Estudo e aplicação de Java, Spring Boot e
-                        desenvolvimento de APIs RESTful em projetos reais.
-                        <br />
-                        - Introdução ao desenvolvimento front-end com HTML, CSS
-                        e JavaScript, criando páginas dinâmicas.
-                        <br />
-                        - Contato direto com metodologias ágeis e boas práticas
-                        de codificação.
-                        <br /> - Projeto realizado em parceria com o Governo do
-                        Maranhão, Fapema, Emap, Grupo Mateus, Suzano, Tegram,
-                        Copi e Secti.
-                      </p>
-                      <div className="flex gap-2">
-                        <Badge variant="secondary">HTML</Badge>
-                        <Badge variant="secondary">CSS</Badge>
-                        <Badge variant="secondary">JavaScript</Badge>
-                        <Badge variant="secondary">Java</Badge>
-                        <Badge variant="secondary">Spring Boot</Badge>
-                        <Badge variant="secondary">SQL</Badge>
+                      <div>
+                        {experience.map((exp) => (
+                          <ExperienceCard key={exp.title} experience={exp} />
+                        ))}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
@@ -195,9 +128,9 @@ export function App() {
                 <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
                   Tecnologias
                 </h2>
-                <div className="grid grid-cols-4 gap-1 sm:grid-cols-6 md:grid-cols-7">
+                <ul className="grid grid-cols-4 gap-1 sm:grid-cols-7 md:grid-cols-9">
                   {Array.from({ length: 7 }).map((_, index) => (
-                    <div
+                    <li
                       key={index}
                       className="border shadow overflow-hidden rounded-md border-zinc-200 bg-zinc-100/30 transition-colors backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/30"
                     >
@@ -205,9 +138,9 @@ export function App() {
                         <Github className="group-hover:-translate-y-1 size-8 transition-all duration-300" />
                         <span className="mt-3 text-xs">GitHub</span>
                       </div>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </section>
 
@@ -216,16 +149,16 @@ export function App() {
                 <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
                   Formação Acadêmica
                 </h2>
-                <div className="flex justify-between items-start mb-1">
+                <article className="flex flex-col md:flex-row justify-between items-start mb-1">
                   <div className="mb-2">
                     <h3 className="text-md md:text-2xl font-bold bg-gradient-to-br from-black from-30% to-black/50 dark:from-white dark:from-30% dark:to-white/50 bg-clip-text text-transparent">
-                      Tecnólogo - Analise e Desenvolvimento de Sistemas
+                      Analise e Desenvolvimento de Sistemas
                     </h3>
                     <p className="text-xs font-normal uppercase tracking-wider">
                       2022 - 2024
                     </p>
                   </div>
-                  <div className="text-right">
+                  <div className="md:text-right">
                     <div className="flex items-center gap-2">
                       <img
                         className="w-5 h-5 rounded"
@@ -238,7 +171,7 @@ export function App() {
                     </div>
                     <p className="text-sm">Presencial</p>
                   </div>
-                </div>
+                </article>
               </div>
             </section>
           </div>
