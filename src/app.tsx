@@ -1,5 +1,4 @@
 import { Background } from "./components/background";
-import { Github } from "lucide-react";
 import { Logo } from "./components/logo";
 import { ThemeToggle } from "./components/theme-toggle";
 import {
@@ -11,8 +10,17 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
 import { CarouselCard } from "./components/carousel-card";
 import { ExperienceCard } from "./components/experience-card";
+import { HtmlIcon } from "./components/icons/html-icon";
+import { IconCard } from "./components/icon-card";
+import { CssIcon } from "./components/icons/css-icon";
+import { JsIcon } from "./components/icons/js-icon";
+import { JavaIcon } from "./components/icons/java-icon";
+import { SpringBootIcon } from "./components/icons/spring-boot-icon";
+import { PhpIcon } from "./components/icons/php-icon";
+import { LaravelIcon } from "./components/icons/laravel-icon";
+import { MysqlIcon } from "./components/icons/mysql-icon";
 
-const experience = [
+const currentExperience = [
   {
     title: "Bolsista - Jovem Tech",
     time: "2025 - Atual",
@@ -24,6 +32,28 @@ const experience = [
     stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
   },
 ];
+
+const previousPositions = [
+  {
+    title: "Lamparinas",
+    time: "2025 - Atual",
+    pathLogo: "/logo/pulse.jpeg",
+    enterprise: "Pulse",
+    model: "Presencia",
+    description:
+      "Aprendizado contínuo com cursos de hard e soft skills (comunicação, trabalho em equipe, resolução de problemas), com estudo e aplicação de Java, Spring Boot e desenvolvimento de APIs RESTful em projetos reais. Introdução ao desenvolvimento front-end com HTML, CSS e JavaScript, criando páginas dinâmicas, e contato direto com metodologias ágeis e boas práticas de codificação em um projeto realizado em parceria com o Governo do Maranhão, Fapema, Emap, Grupo Mateus, Suzano, Tegram, Copi e Secti.",
+    stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
+  },{
+    title: "CTC",
+    time: "2025 - Atual",
+    pathLogo: "/logo/pulse.jpeg",
+    enterprise: "Pulse",
+    model: "Presencia",
+    description:
+      "Aprendizado contínuo com cursos de hard e soft skills (comunicação, trabalho em equipe, resolução de problemas), com estudo e aplicação de Java, Spring Boot e desenvolvimento de APIs RESTful em projetos reais. Introdução ao desenvolvimento front-end com HTML, CSS e JavaScript, criando páginas dinâmicas, e contato direto com metodologias ágeis e boas práticas de codificação em um projeto realizado em parceria com o Governo do Maranhão, Fapema, Emap, Grupo Mateus, Suzano, Tegram, Copi e Secti.",
+    stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
+  },
+]
 
 const projects = [
   {
@@ -46,6 +76,41 @@ const projects = [
     description: "Real-time chat application",
     img: "/placeholder.svg",
     tags: ["Java", "Spring Boot", "WebSocket"],
+  },
+];
+
+const techs = [
+  {
+    icon: HtmlIcon,
+    title: "HTML",
+  },
+  {
+    icon: CssIcon,
+    title: "CSS",
+  },
+  {
+    icon: JsIcon,
+    title: "JavaScript",
+  },
+  {
+    icon: PhpIcon,
+    title: "PHP",
+  },
+  {
+    icon: LaravelIcon,
+    title: "Laravel",
+  },
+  {
+    icon: JavaIcon,
+    title: "Java",
+  },
+  {
+    icon: SpringBootIcon,
+    title: "Spring",
+  },
+    {
+    icon: MysqlIcon,
+    title: "MYSQL",
   },
 ];
 
@@ -89,7 +154,7 @@ export function App() {
                   Atualmente
                 </h2>
                 <article>
-                  {experience.map((exp) => (
+                  {currentExperience.map((exp) => (
                     <ExperienceCard key={exp.title} experience={exp} />
                   ))}
                 </article>
@@ -98,12 +163,7 @@ export function App() {
                     <AccordionTrigger>Cargos anteriores</AccordionTrigger>
                     <AccordionContent className="space-y-2">
                       <div>
-                        {experience.map((exp) => (
-                          <ExperienceCard key={exp.title} experience={exp} />
-                        ))}
-                      </div>
-                      <div>
-                        {experience.map((exp) => (
+                        {previousPositions.map((exp) => (
                           <ExperienceCard key={exp.title} experience={exp} />
                         ))}
                       </div>
@@ -128,17 +188,9 @@ export function App() {
                 <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
                   Tecnologias
                 </h2>
-                <ul className="grid grid-cols-4 gap-1 sm:grid-cols-7 md:grid-cols-9">
-                  {Array.from({ length: 7 }).map((_, index) => (
-                    <li
-                      key={index}
-                      className="border shadow overflow-hidden rounded-md border-zinc-200 bg-zinc-100/30 transition-colors backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/30"
-                    >
-                      <div className="group flex aspect-square select-none flex-col items-center justify-center p-2">
-                        <Github className="group-hover:-translate-y-1 size-8 transition-all duration-300" />
-                        <span className="mt-3 text-xs">GitHub</span>
-                      </div>
-                    </li>
+                <ul className="grid grid-cols-4 gap-1 sm:grid-cols-7 md:grid-cols-8">
+                  {techs.map((tech) => (
+                    <IconCard key={tech.title} icon={tech.icon} title={tech.title} />
                   ))}
                 </ul>
               </div>

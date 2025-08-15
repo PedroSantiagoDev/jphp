@@ -16,8 +16,8 @@ interface ExperienceCardProps {
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
-    <article>
-      <header className="flex justify-between items-start mb-1">
+    <article className="mb-2">
+      <header className="flex justify-between items-start mb-2">
         <div className="mb-2">
           <h3 className="text-md md:text-2xl font-bold bg-gradient-to-br from-black from-30% to-black/50 dark:from-white dark:from-30% dark:to-white/50 bg-clip-text text-transparent">
             {experience.title}
