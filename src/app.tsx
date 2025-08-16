@@ -19,7 +19,18 @@ import { SpringBootIcon } from "./components/icons/spring-boot-icon";
 import { PhpIcon } from "./components/icons/php-icon";
 import { LaravelIcon } from "./components/icons/laravel-icon";
 import { MysqlIcon } from "./components/icons/mysql-icon";
-import { Github, Link2, Linkedin, Mail } from "lucide-react";
+import { FileUser, Github, Link2, Linkedin, Mail, Menu, X } from "lucide-react";
+import { Button } from "./components/ui/button";
+import { useState, useRef, useEffect } from "react";
+
+const navLinks = [
+  { href: "#home", label: "/Home" },
+  { href: "/blog", label: "/Blog" },
+  { href: "#experience", label: "/Experiência" },
+  { href: "#project", label: "/Projetos" },
+  { href: "#techs", label: "/Tecnologias" },
+  { href: "#formation", label: "/Formação" },
+];
 
 const currentExperience = [
   {
@@ -29,7 +40,7 @@ const currentExperience = [
     enterprise: "Pulse",
     model: "Presencial",
     description:
-      "Aprendizado contínuo com cursos de hard e soft skills (comunicação, trabalho em equipe, resolução de problemas), com estudo e aplicação de Java, Spring Boot e desenvolvimento de APIs RESTful em projetos reais. Introdução ao desenvolvimento front-end com HTML, CSS e JavaScript, criando páginas dinâmicas, e contato direto com metodologias ágeis e boas práticas de codificação em um projeto realizado em parceria com o Governo do Maranhão, Fapema, Emap, Grupo Mateus, Suzano, Tegram, Copi e Secti.",
+      "Desenvolvimento de APIs RESTful com Java e Spring Boot e criação de front-ends dinâmicos com HTML, CSS e JavaScript, aplicando metodologias ágeis e boas práticas de código em projetos reais.",
     stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
   },
 ];
@@ -76,24 +87,27 @@ const previousPositions = [
 const projects = [
   {
     href: "https://google.com.br",
-    title: "RESTful API with Java and Spring Boot",
-    description: "RESTful API for a hotel management system",
-    img: "/placeholder.svg",
-    tags: ["Java", "Spring Boot", "RESTful", "API"],
+    title: "CodeLink",
+    description:
+      "CODELINK: Intranet em Laravel para gestão de notícias, reservas, links e unidades organizacionais.",
+    img: "/project/codelink.png",
+    tags: ["PHP", "Laravel", "MySQL", "LiveWire", "Tailwind"],
   },
   {
     href: "https://google.com.br",
     title: "CodeLink",
-    description: "Authentication and authorization system",
-    img: "/placeholder.svg",
-    tags: ["Java", "Spring Security", "JWT"],
+    description:
+      "CODELINK: Intranet em Laravel para gestão de notícias, reservas, links e unidades organizacionais.",
+    img: "/project/codelink.png",
+    tags: ["PHP", "Laravel", "MySQL", "LiveWire", "Tailwind"],
   },
   {
     href: "https://google.com.br",
-    title: "Real-Time Chat with Spring WebSocket",
-    description: "Real-time chat application",
-    img: "/placeholder.svg",
-    tags: ["Java", "Spring Boot", "WebSocket"],
+    title: "CodeLink",
+    description:
+      "CODELINK: Intranet em Laravel para gestão de notícias, reservas, links e unidades organizacionais.",
+    img: "/project/codelink.png",
+    tags: ["PHP", "Laravel", "MySQL", "LiveWire", "Tailwind"],
   },
 ];
 
@@ -133,28 +147,98 @@ const techs = [
 ];
 
 export function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        headerRef.current &&
+        !headerRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen overflow-hidden relative">
       <Background />
-      <div className="m-auto max-w-5xl">
-        <header className="p-2">
-          <div className="flex justify-between items-center">
-            <Logo name="JPHP" />
+      <header
+        ref={headerRef}
+        className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm"
+      >
+        <div className="m-auto max-w-5xl flex justify-between items-center p-4">
+          <Logo name="JPHP" />
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <div className="flex items-center gap-2">
             <ThemeToggle />
+            <div className="md:hidden">
+              <Button
+                size="icon"
+                variant="outline"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </Button>
+            </div>
           </div>
-        </header>
-        <main>
+        </div>
+        {isMenuOpen && (
+          <nav className="md:hidden flex flex-col items-start gap-4 p-4 border-t">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        )}
+      </header>
+      <div className="m-auto max-w-5xl">
+        <main className="pt-20">
           <div className="px-4 py-8 space-y-8">
-            <section>
+            <section id="home" className="scroll-mt-20">
               <div className="flex flex-col md:flex-row items-center gap-6">
-                <Avatar className="w-32 h-32 flex-shrink-0">
-                  <AvatarImage src="/avatar.png" />
-                  <AvatarFallback className="text-2xl">
-                    João Pedro
-                  </AvatarFallback>
-                </Avatar>
+                <div className="flex flex-col gap-2 items-center">
+                  <Avatar className="w-32 h-32 flex-shrink-0">
+                    <AvatarImage src="/avatar.png" />
+                    <AvatarFallback className="text-2xl">
+                      João Pedro
+                    </AvatarFallback>
+                  </Avatar>
+                  <a href="/curriculo.pdf" target="_blank">
+                    <Button className="flex gap-1 items-center">
+                      <FileUser />
+                      currículo
+                    </Button>
+                  </a>
+                </div>
                 <div className="flex-1 space-y-2">
-                  <h1 className="text-md md:text-2xl font-bold">
+                  <h1 className="text-md md:text-2xl font-bold text-center sm:text-start">
                     Olá, eu sou João Pedro,
                   </h1>
                   <p className="text-sm md:text-sm text-foreground">
@@ -197,7 +281,7 @@ export function App() {
               </div>
             </section>
 
-            <section>
+            <section id="experience" className="scroll-mt-20">
               <div>
                 <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
                   Atualmente
@@ -222,7 +306,7 @@ export function App() {
               </div>
             </section>
 
-            <section>
+            <section id="project" className="scroll-mt-20">
               <div>
                 <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
                   Projetos Recentes
@@ -232,7 +316,7 @@ export function App() {
               </div>
             </section>
 
-            <section>
+            <section id="techs" className="scroll-mt-20">
               <div>
                 <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
                   Tecnologias
@@ -249,7 +333,7 @@ export function App() {
               </div>
             </section>
 
-            <section>
+            <section id="formation" className="scroll-mt-20">
               <div>
                 <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
                   Formação Acadêmica

@@ -1,4 +1,5 @@
 import { CarouselComponent } from "@/components/carousel-component";
+import AutoPlay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -22,7 +23,9 @@ export function CarouselCard({ projects }: CarouselCardProps) {
     <Carousel
       opts={{
         align: "start",
+        loop: true,
       }}
+      plugins={[AutoPlay({ delay: 3000 })]}
     >
       <CarouselContent className="-ml-1">
         {projects.map((project, index) => (

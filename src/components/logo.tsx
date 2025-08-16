@@ -6,8 +6,7 @@ export function Logo({ name }: LogoProps) {
   const letters = name.split("");
 
   return (
-    <a href="/" className="flex items-center gap-1 cursor-pointer">
-      {/* Se você tiver uma imagem de logo, pode adicioná-la aqui */}
+    <a href="#home" className="flex items-center gap-1 cursor-pointer">
       <img alt="JPHP logo" className="w-12 h-12" src="/logo.png" />
       <div className="overflow-hidden flex cursor-default">
         {letters.map((letter, index) => (
