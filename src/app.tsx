@@ -19,6 +19,7 @@ import { SpringBootIcon } from "./components/icons/spring-boot-icon";
 import { PhpIcon } from "./components/icons/php-icon";
 import { LaravelIcon } from "./components/icons/laravel-icon";
 import { MysqlIcon } from "./components/icons/mysql-icon";
+import { Github, Link2, Linkedin, Mail } from "lucide-react";
 
 const currentExperience = [
   {
@@ -26,7 +27,7 @@ const currentExperience = [
     time: "2025 - Atual",
     pathLogo: "/logo/pulse.jpeg",
     enterprise: "Pulse",
-    model: "Presencia",
+    model: "Presencial",
     description:
       "Aprendizado contínuo com cursos de hard e soft skills (comunicação, trabalho em equipe, resolução de problemas), com estudo e aplicação de Java, Spring Boot e desenvolvimento de APIs RESTful em projetos reais. Introdução ao desenvolvimento front-end com HTML, CSS e JavaScript, criando páginas dinâmicas, e contato direto com metodologias ágeis e boas práticas de codificação em um projeto realizado em parceria com o Governo do Maranhão, Fapema, Emap, Grupo Mateus, Suzano, Tegram, Copi e Secti.",
     stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
@@ -35,25 +36,42 @@ const currentExperience = [
 
 const previousPositions = [
   {
-    title: "Lamparinas",
-    time: "2025 - Atual",
-    pathLogo: "/logo/pulse.jpeg",
-    enterprise: "Pulse",
-    model: "Presencia",
+    title: "Desenvolvedor full stack - Freelance",
+    time: "2024 - Atual",
+    pathLogo: "/logo/lamps.jpeg",
+    enterprise: "Lamparinas",
+    model: "Home Office",
     description:
-      "Aprendizado contínuo com cursos de hard e soft skills (comunicação, trabalho em equipe, resolução de problemas), com estudo e aplicação de Java, Spring Boot e desenvolvimento de APIs RESTful em projetos reais. Introdução ao desenvolvimento front-end com HTML, CSS e JavaScript, criando páginas dinâmicas, e contato direto com metodologias ágeis e boas práticas de codificação em um projeto realizado em parceria com o Governo do Maranhão, Fapema, Emap, Grupo Mateus, Suzano, Tegram, Copi e Secti.",
-    stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
-  },{
-    title: "CTC",
-    time: "2025 - Atual",
-    pathLogo: "/logo/pulse.jpeg",
-    enterprise: "Pulse",
-    model: "Presencia",
-    description:
-      "Aprendizado contínuo com cursos de hard e soft skills (comunicação, trabalho em equipe, resolução de problemas), com estudo e aplicação de Java, Spring Boot e desenvolvimento de APIs RESTful em projetos reais. Introdução ao desenvolvimento front-end com HTML, CSS e JavaScript, criando páginas dinâmicas, e contato direto com metodologias ágeis e boas práticas de codificação em um projeto realizado em parceria com o Governo do Maranhão, Fapema, Emap, Grupo Mateus, Suzano, Tegram, Copi e Secti.",
-    stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
+      "Atuação no desenvolvimento full-stack com PHP, JavaScript e SQL, com foco na otimização da performance e no fortalecimento da segurança do sistema (prevenção de SQL Injection e CSRF), resultando em melhorias diretas no fluxo de trabalho da equipe e na experiência do usuário",
+    stack: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "PHP",
+      "SQL Server",
+      "SQL",
+      "Jquery",
+      "BootStrap",
+    ],
   },
-]
+  {
+    title: "Técnico de suporte",
+    time: "2023 - 2025",
+    pathLogo: "/logo/ctc.jpeg",
+    enterprise: "CTC",
+    model: "Presencial",
+    description:
+      "Atuação em suporte nível 2 (N2), com diagnóstico e solução de problemas de hardware e software, desenvolvimento de scripts para automação e implementação de políticas de segurança (backups, permissões), aliando a competência técnica a uma comunicação eficaz com usuários e à habilidade de priorizar demandas em ambientes dinâmicos.",
+    stack: [
+      "Sistemas Operacionais",
+      "Redes de Computadores",
+      "Scripting e Automação",
+      "Diagnóstico de Hardware",
+      "Comunicação Clara e Didática",
+      "Trabalho em Equipe",
+    ],
+  },
+];
 
 const projects = [
   {
@@ -108,7 +126,7 @@ const techs = [
     icon: SpringBootIcon,
     title: "Spring",
   },
-    {
+  {
     icon: MysqlIcon,
     title: "MYSQL",
   },
@@ -128,9 +146,9 @@ export function App() {
         <main>
           <div className="px-4 py-8 space-y-8">
             <section>
-              <div className="flex lg:flex-row items-center gap-6">
-                <Avatar className="w-24 h-24 flex-shrink-0">
-                  <AvatarImage src="/placeholder.svg" />
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <Avatar className="w-32 h-32 flex-shrink-0">
+                  <AvatarImage src="/avatar.png" />
                   <AvatarFallback className="text-2xl">
                     João Pedro
                   </AvatarFallback>
@@ -139,11 +157,42 @@ export function App() {
                   <h1 className="text-md md:text-2xl font-bold">
                     Olá, eu sou João Pedro,
                   </h1>
-                  <p className="text-sm md:text-sm text-muted-foreground">
-                    Um desenvolvedor backend especialista em Java e PHP, focado
-                    na construção de APIs robustas e na arquitetura de sistemas
-                    escaláveis.
+                  <p className="text-sm md:text-sm text-foreground">
+                    Desenvolvedor com experiência full-stack e paixão por
+                    backend, onde me especializo em Java (Spring Boot) e PHP
+                    (Laravel). Desde 2023, venho atuando em projetos
+                    desafiadores para construir APIs robustas e arquitetar
+                    sistemas escaláveis com uma visão abrangente.
                   </p>
+                  <div className="flex gap-5 items-center">
+                    <div className="flex gap-2 text-muted-foreground">
+                      <Link2 className="w-5 h-5" />
+                      <p className="text-sm md:text-sm">minhas redes:</p>
+                    </div>
+                    <div className="flex gap-3">
+                      <a
+                        href="https://github.com/PedroSantiagoDev"
+                        target="_blank"
+                        className="hover:-translate-y-1 transition-all duration-300"
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/pedro-santiago-lima/"
+                        target="_blank"
+                        className="hover:-translate-y-1 transition-all duration-300"
+                      >
+                        <Linkedin className="w-5 h-5" />
+                      </a>
+                      <a
+                        href="mailto:joaopedrosantiago1103@gmail.com?subject=Contato pelo Portfóli"
+                        target="_blank"
+                        className="hover:-translate-y-1 transition-all duration-300"
+                      >
+                        <Mail className="w-5 h-5" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -190,7 +239,11 @@ export function App() {
                 </h2>
                 <ul className="grid grid-cols-4 gap-1 sm:grid-cols-7 md:grid-cols-8">
                   {techs.map((tech) => (
-                    <IconCard key={tech.title} icon={tech.icon} title={tech.title} />
+                    <IconCard
+                      key={tech.title}
+                      icon={tech.icon}
+                      title={tech.title}
+                    />
                   ))}
                 </ul>
               </div>

@@ -40,8 +40,10 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
           <p className="text-sm">{experience.model}</p>
         </div>
       </header>
-      <p className="text-xs mb-2">{experience.description}</p>
-      <footer className="flex gap-1">
+      <p className="text-sm mb-2 text-muted-foreground">
+        {experience.description}
+      </p>
+      <footer className="flex flex-wrap gap-2">
         {experience.stack.map((tech) => (
           <Badge key={tech} variant="secondary">
             {tech}

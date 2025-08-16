@@ -1,17 +1,15 @@
-
-
 interface LogoProps {
   name: string;
 }
 
 export function Logo({ name }: LogoProps) {
-  const letters = name.split('');
+  const letters = name.split("");
 
   return (
-    <a href="/" className="flex items-center gap-3 cursor-pointer">
+    <a href="/" className="flex items-center gap-1 cursor-pointer">
       {/* Se você tiver uma imagem de logo, pode adicioná-la aqui */}
-      {/* <img alt="JPHP logo" width="40" height="40" src="/logo.svg" /> */}
-      <div className="overflow-hidden py-2 flex cursor-default">
+      <img alt="JPHP logo" className="w-12 h-12" src="/logo.png" />
+      <div className="overflow-hidden flex cursor-default">
         {letters.map((letter, index) => (
           <h1
             key={index}
