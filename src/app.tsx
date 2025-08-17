@@ -1,4 +1,3 @@
-import { Background } from "./components/background";
 import { Logo } from "./components/logo";
 import { ThemeToggle } from "./components/theme-toggle";
 import {
@@ -22,6 +21,7 @@ import { MysqlIcon } from "./components/icons/mysql-icon";
 import { FileUser, Github, Link2, Linkedin, Mail, Menu, X } from "lucide-react";
 import { Button } from "./components/ui/button";
 import { useState, useRef, useEffect } from "react";
+import { Layout } from "./components/layout";
 
 const navLinks = [
   { href: "#home", label: "/Home" },
@@ -167,8 +167,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden relative">
-      <Background />
+    <Layout>
       <header
         ref={headerRef}
         className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm"
@@ -218,154 +217,152 @@ export function App() {
           </nav>
         )}
       </header>
-      <div className="m-auto max-w-5xl">
-        <main className="pt-20">
-          <div className="px-4 py-8 space-y-8">
-            <section id="home" className="scroll-mt-20">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="flex flex-col gap-2 items-center">
-                  <Avatar className="w-32 h-32 flex-shrink-0">
-                    <AvatarImage src="/avatar.png" />
-                    <AvatarFallback className="text-2xl">
-                      João Pedro
-                    </AvatarFallback>
-                  </Avatar>
-                  <a href="/curriculo.pdf" target="_blank">
-                    <Button className="flex gap-1 items-center">
-                      <FileUser />
-                      currículo
-                    </Button>
-                  </a>
+      <main className="pt-20">
+        <div className="px-4 py-8 space-y-8">
+          <section id="home" className="scroll-mt-20">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex flex-col gap-2 items-center">
+                <Avatar className="w-32 h-32 flex-shrink-0">
+                  <AvatarImage src="/avatar.png" />
+                  <AvatarFallback className="text-2xl">
+                    João Pedro
+                  </AvatarFallback>
+                </Avatar>
+                <a href="/curriculo.pdf" target="_blank">
+                  <Button className="flex gap-1 items-center">
+                    <FileUser />
+                    currículo
+                  </Button>
+                </a>
+              </div>
+              <div className="flex-1 space-y-2">
+                <h1 className="text-md md:text-2xl font-bold text-center sm:text-start">
+                  Olá, eu sou João Pedro,
+                </h1>
+                <p className="text-sm md:text-sm text-foreground">
+                  Desenvolvedor com experiência full-stack e paixão por backend,
+                  onde me especializo em Java (Spring Boot) e PHP (Laravel).
+                  Desde 2023, venho atuando em projetos desafiadores para
+                  construir APIs robustas e arquitetar sistemas escaláveis com
+                  uma visão abrangente.
+                </p>
+                <div className="flex gap-5 items-center">
+                  <div className="flex gap-2 text-muted-foreground">
+                    <Link2 className="w-5 h-5" />
+                    <p className="text-sm md:text-sm">minhas redes:</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <a
+                      href="https://github.com/PedroSantiagoDev"
+                      target="_blank"
+                      className="hover:-translate-y-1 transition-all duration-300"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/pedro-santiago-lima/"
+                      target="_blank"
+                      className="hover:-translate-y-1 transition-all duration-300"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="mailto:joaopedrosantiago1103@gmail.com?subject=Contato pelo Portfóli"
+                      target="_blank"
+                      className="hover:-translate-y-1 transition-all duration-300"
+                    >
+                      <Mail className="w-5 h-5" />
+                    </a>
+                  </div>
                 </div>
-                <div className="flex-1 space-y-2">
-                  <h1 className="text-md md:text-2xl font-bold text-center sm:text-start">
-                    Olá, eu sou João Pedro,
-                  </h1>
-                  <p className="text-sm md:text-sm text-foreground">
-                    Desenvolvedor com experiência full-stack e paixão por
-                    backend, onde me especializo em Java (Spring Boot) e PHP
-                    (Laravel). Desde 2023, venho atuando em projetos
-                    desafiadores para construir APIs robustas e arquitetar
-                    sistemas escaláveis com uma visão abrangente.
+              </div>
+            </div>
+          </section>
+
+          <section id="experience" className="scroll-mt-20">
+            <div>
+              <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
+                Atualmente
+              </h2>
+              <article>
+                {currentExperience.map((exp) => (
+                  <ExperienceCard key={exp.title} experience={exp} />
+                ))}
+              </article>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>Cargos anteriores</AccordionTrigger>
+                  <AccordionContent className="space-y-2">
+                    <div>
+                      {previousPositions.map((exp) => (
+                        <ExperienceCard key={exp.title} experience={exp} />
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </section>
+
+          <section id="project" className="scroll-mt-20">
+            <div>
+              <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
+                Projetos Recentes
+              </h2>
+
+              <CarouselCard projects={projects} />
+            </div>
+          </section>
+
+          <section id="techs" className="scroll-mt-20">
+            <div>
+              <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
+                Tecnologias
+              </h2>
+              <ul className="grid grid-cols-4 gap-1 sm:grid-cols-7 md:grid-cols-8">
+                {techs.map((tech) => (
+                  <IconCard
+                    key={tech.title}
+                    icon={tech.icon}
+                    title={tech.title}
+                  />
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section id="formation" className="scroll-mt-20">
+            <div>
+              <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
+                Formação Acadêmica
+              </h2>
+              <article className="flex flex-col md:flex-row justify-between items-start mb-1">
+                <div className="mb-2">
+                  <h3 className="text-md md:text-2xl font-bold bg-gradient-to-br from-black from-30% to-black/50 dark:from-white dark:from-30% dark:to-white/50 bg-clip-text text-transparent">
+                    Analise e Desenvolvimento de Sistemas
+                  </h3>
+                  <p className="text-xs font-normal uppercase tracking-wider">
+                    2022 - 2024
                   </p>
-                  <div className="flex gap-5 items-center">
-                    <div className="flex gap-2 text-muted-foreground">
-                      <Link2 className="w-5 h-5" />
-                      <p className="text-sm md:text-sm">minhas redes:</p>
-                    </div>
-                    <div className="flex gap-3">
-                      <a
-                        href="https://github.com/PedroSantiagoDev"
-                        target="_blank"
-                        className="hover:-translate-y-1 transition-all duration-300"
-                      >
-                        <Github className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="https://www.linkedin.com/in/pedro-santiago-lima/"
-                        target="_blank"
-                        className="hover:-translate-y-1 transition-all duration-300"
-                      >
-                        <Linkedin className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="mailto:joaopedrosantiago1103@gmail.com?subject=Contato pelo Portfóli"
-                        target="_blank"
-                        className="hover:-translate-y-1 transition-all duration-300"
-                      >
-                        <Mail className="w-5 h-5" />
-                      </a>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </section>
-
-            <section id="experience" className="scroll-mt-20">
-              <div>
-                <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
-                  Atualmente
-                </h2>
-                <article>
-                  {currentExperience.map((exp) => (
-                    <ExperienceCard key={exp.title} experience={exp} />
-                  ))}
-                </article>
-                <Accordion type="single" collapsible>
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>Cargos anteriores</AccordionTrigger>
-                    <AccordionContent className="space-y-2">
-                      <div>
-                        {previousPositions.map((exp) => (
-                          <ExperienceCard key={exp.title} experience={exp} />
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </div>
-            </section>
-
-            <section id="project" className="scroll-mt-20">
-              <div>
-                <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
-                  Projetos Recentes
-                </h2>
-
-                <CarouselCard projects={projects} />
-              </div>
-            </section>
-
-            <section id="techs" className="scroll-mt-20">
-              <div>
-                <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
-                  Tecnologias
-                </h2>
-                <ul className="grid grid-cols-4 gap-1 sm:grid-cols-7 md:grid-cols-8">
-                  {techs.map((tech) => (
-                    <IconCard
-                      key={tech.title}
-                      icon={tech.icon}
-                      title={tech.title}
+                <div className="md:text-right">
+                  <div className="flex items-center gap-2">
+                    <img
+                      className="w-5 h-5 rounded"
+                      alt="logo da empresa"
+                      src="/logo/faculdade.jpeg"
                     />
-                  ))}
-                </ul>
-              </div>
-            </section>
-
-            <section id="formation" className="scroll-mt-20">
-              <div>
-                <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
-                  Formação Acadêmica
-                </h2>
-                <article className="flex flex-col md:flex-row justify-between items-start mb-1">
-                  <div className="mb-2">
-                    <h3 className="text-md md:text-2xl font-bold bg-gradient-to-br from-black from-30% to-black/50 dark:from-white dark:from-30% dark:to-white/50 bg-clip-text text-transparent">
-                      Analise e Desenvolvimento de Sistemas
-                    </h3>
-                    <p className="text-xs font-normal uppercase tracking-wider">
-                      2022 - 2024
-                    </p>
+                    <span className="text-sm font-normal text-black-400 dark:text-black-400">
+                      Faculdade ISL Wyden
+                    </span>
                   </div>
-                  <div className="md:text-right">
-                    <div className="flex items-center gap-2">
-                      <img
-                        className="w-5 h-5 rounded"
-                        alt="logo da empresa"
-                        src="/logo/faculdade.jpeg"
-                      />
-                      <span className="text-sm font-normal text-black-400 dark:text-black-400">
-                        Faculdade ISL Wyden
-                      </span>
-                    </div>
-                    <p className="text-sm">Presencial</p>
-                  </div>
-                </article>
-              </div>
-            </section>
-          </div>
-        </main>
-      </div>
-    </div>
+                  <p className="text-sm">Presencial</p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+    </Layout>
   );
 }
