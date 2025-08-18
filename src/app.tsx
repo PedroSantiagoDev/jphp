@@ -25,11 +25,11 @@ import { Layout } from "./components/layout";
 
 const navLinks = [
   { href: "#home", label: "/Home" },
-  { href: "/blog", label: "/Blog" },
   { href: "#experience", label: "/Experiência" },
   { href: "#project", label: "/Projetos" },
   { href: "#techs", label: "/Tecnologias" },
   { href: "#formation", label: "/Formação" },
+  { href: "/blog", label: "/Blog" },
 ];
 
 const currentExperience = [
@@ -181,7 +181,7 @@ export function App() {
                 href={link.href}
                 className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
               >
-                {link.label}
+                <Button variant="link">{link.label}</Button>
               </a>
             ))}
           </nav>
@@ -211,13 +211,13 @@ export function App() {
                 className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {link.label}
+                <Button variant="link">{link.label}</Button>
               </a>
             ))}
           </nav>
         )}
       </header>
-      <main className="pt-20">
+      <main className="pt-14">
         <div className="px-4 py-8 space-y-8">
           <section id="home" className="scroll-mt-20">
             <div className="flex flex-col md:flex-row items-center gap-6">
