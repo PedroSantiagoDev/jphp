@@ -172,7 +172,7 @@ export function App() {
         ref={headerRef}
         className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm"
       >
-        <div className="m-auto max-w-5xl flex justify-between items-center p-4">
+        <div className="m-auto max-w-5xl flex justify-between items-center p-2">
           <Logo name="JPHP" />
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
             {navLinks.map((link) => (
