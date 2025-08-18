@@ -52,10 +52,10 @@ export function Blog() {
         <section>
           <h1 className="text-7xl font-bold mb-5">Blog.</h1>
           <p className="max-w-2xl font-light text-accent-foreground">
-            Bem-vindo ao meu blog! Aqui, compartilho insights, tutoriais e
-            reflexões sobre desenvolvimento web, design e tecnologia. Mergulhe
-            para explorar os artigos e tendências mais recentes no mundo
-            digital.
+            Bem-vindo ao meu blog! Um espaço para compartilhar minha jornada de
+            aprendizado contínuo em tecnologia. Aqui você encontrará insights e
+            tutoriais sobre meus estudos em desenvolvimento back-end, engenharia
+            de software e as tecnologias que estou explorando.
           </p>
         </section>
 
