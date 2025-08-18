@@ -4,8 +4,36 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import grayMatter from "gray-matter";
+
+interface Post {
+  slug: string;
+  data: any;
+}
 
 export function Blog() {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const modules = import.meta.glob("/src/posts/*.md", { as: "raw" });
+      const postsData = await Promise.all(
+        Object.entries(modules).map(async ([path, resolver]) => {
+          const content = await resolver();
+          const { data } = grayMatter(content);
+          const slug = path.split("/").pop()?.replace(".md", "");
+          return { slug, data };
+        })
+      );
+      setPosts(
+        postsData.filter((post): post is Post => post.slug !== undefined)
+      );
+    };
+
+    fetchPosts();
+  }, []);
+
   return (
     <Layout>
       <header className="m-auto max-w-5xl py-8 flex justify-between">
@@ -20,7 +48,7 @@ export function Blog() {
         </Button>
         <ThemeToggle />
       </header>
-      <main className="px-4 py-8 space-y-10">
+      <main className="px-4 space-y-10">
         <section>
           <h1 className="text-7xl font-bold mb-5">Blog.</h1>
           <p className="max-w-2xl font-light text-accent-foreground">
@@ -31,13 +59,17 @@ export function Blog() {
           </p>
         </section>
 
-        <section>
-          <BlogCard
-            tags={["nextjs", "reagir", "desenvolvimento web"]}
-            title="Esta postagem é usada para testar o tema e a sintaxe do blog :3"
-            description="Esta é uma breve descrição da postagem do blog"
-            date="4 de julho de 2024"
-          />
+        <section className="space-y-4">
+          {posts.map((post) => (
+            <BlogCard
+              key={post.slug}
+              slug={post.slug!}
+              tags={post.data.tags || []}
+              title={post.data.title}
+              description={post.data.description}
+              date={post.data.date}
+            />
+          ))}
         </section>
       </main>
     </Layout>

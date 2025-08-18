@@ -7,6 +7,8 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router-dom";
 import { Blog } from "./pages/blog.tsx";
 
+import { Post } from "./pages/post.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,12 +18,16 @@ const router = createBrowserRouter([
     path: "/blog",
     element: <Blog />,
   },
+  {
+    path: "/blog/:slug",
+    element: <Post />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />,
+      <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>
 );
