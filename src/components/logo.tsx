@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface LogoProps {
   name: string;
 }
@@ -6,7 +8,7 @@ export function Logo({ name }: LogoProps) {
   const letters = name.split("");
 
   return (
-    <a href="#home" className="flex items-center gap-1 cursor-pointer">
+    <Link to="/" className="flex items-center gap-1 cursor-pointer">
       <img alt="JPHP logo" className="w-12 h-12" src="/logo.png" />
       <div className="overflow-hidden flex cursor-default">
         {letters.map((letter, index) => (
@@ -19,6 +21,6 @@ export function Logo({ name }: LogoProps) {
           </h1>
         ))}
       </div>
-    </a>
+    </Link>
   );
 }

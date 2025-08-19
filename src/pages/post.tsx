@@ -54,7 +54,7 @@ export function Post() {
         </Button>
         <ThemeToggle />
       </header>
-      <main className="px-4 prose dark:prose-invert max-w-none">
+      <main className="px-4 prose dark:prose-invert max-w-none mb-10">
         <h1 className="text-4xl text-center">{post.data.title}</h1>
         <p className="text-center text-muted-foreground">
           {post.data.description}

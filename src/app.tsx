@@ -17,11 +17,20 @@ import { JavaIcon } from "./components/icons/java-icon";
 import { SpringBootIcon } from "./components/icons/spring-boot-icon";
 import { PhpIcon } from "./components/icons/php-icon";
 import { LaravelIcon } from "./components/icons/laravel-icon";
+import { DockerIcon } from "./components/icons/docker-icon";
 import { MysqlIcon } from "./components/icons/mysql-icon";
+import { GitIcon } from "./components/icons/git-icon";
 import { FileUser, Github, Link2, Linkedin, Mail, Menu, X } from "lucide-react";
 import { Button } from "./components/ui/button";
 import { useState, useRef, useEffect } from "react";
 import { Layout } from "./components/layout";
+import { PostgreSQLIcon } from "./components/icons/postgre-sql-icon";
+import { ReactIcon } from "./components/icons/react-icon";
+import { TailwindIcon } from "./components/icons/tailwind-icon";
+import { PostManIcon } from "./components/icons/postman-icon";
+import { NodejsIcon } from "./components/icons/nodejs-icon";
+import { Link } from "react-router-dom";
+import { LinuxIcon } from "./components/icons/linux-icon";
 
 const navLinks = [
   { href: "#home", label: "/Home" },
@@ -121,18 +130,6 @@ const projects = [
 
 const techs = [
   {
-    icon: HtmlIcon,
-    title: "HTML",
-  },
-  {
-    icon: CssIcon,
-    title: "CSS",
-  },
-  {
-    icon: JsIcon,
-    title: "JavaScript",
-  },
-  {
     icon: PhpIcon,
     title: "PHP",
   },
@@ -151,6 +148,50 @@ const techs = [
   {
     icon: MysqlIcon,
     title: "MYSQL",
+  },
+  {
+    icon: PostgreSQLIcon,
+    title: "PostgreSQL",
+  },
+  {
+    icon: DockerIcon,
+    title: "Docker",
+  },
+  {
+    icon: GitIcon,
+    title: "Git",
+  },
+  {
+    icon: PostManIcon,
+    title: "Postman",
+  },
+  {
+    icon: LinuxIcon,
+    title: "Linux",
+  },
+  {
+    icon: HtmlIcon,
+    title: "HTML",
+  },
+  {
+    icon: CssIcon,
+    title: "CSS",
+  },
+  {
+    icon: JsIcon,
+    title: "JavaScript",
+  },
+  {
+    icon: ReactIcon,
+    title: "React",
+  },
+  {
+    icon: NodejsIcon,
+    title: "Node.Js",
+  },
+  {
+    icon: TailwindIcon,
+    title: "TailwindCSS",
   },
 ];
 
@@ -183,15 +224,25 @@ export function App() {
         <div className="m-auto max-w-5xl flex justify-between items-center p-2">
           <Logo name="JPHP" />
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
-              >
-                <Button variant="link">{link.label}</Button>
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
+                >
+                  <Button variant="link">{link.label}</Button>
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
+                >
+                  <Button variant="link">{link.label}</Button>
+                </a>
+              )
+            )}
           </nav>
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -212,16 +263,27 @@ export function App() {
         </div>
         {isMenuOpen && (
           <nav className="md:hidden flex flex-col items-start gap-4 p-4 border-t">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Button variant="link">{link.label}</Button>
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Button variant="link">{link.label}</Button>
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Button variant="link">{link.label}</Button>
+                </a>
+              )
+            )}
           </nav>
         )}
       </header>
