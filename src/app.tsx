@@ -86,28 +86,36 @@ const previousPositions = [
 
 const projects = [
   {
-    href: "https://google.com.br",
-    title: "CodeLink",
+    href: "https://homolog.aws.eti.br/",
+    title: "Intranet CodeLink",
     description:
-      "CODELINK: Intranet em Laravel para gestão de notícias, reservas, links e unidades organizacionais.",
+      "Plataforma intranet em Laravel para gestão de notícias, reservas, links e unidades organizacionais, otimizando comunicação interna.",
     img: "/project/codelink.png",
-    tags: ["PHP", "Laravel", "MySQL", "LiveWire", "Tailwind"],
+    tags: ["PHP", "Laravel", "MySQL", "Livewire", "Tailwind CSS"],
   },
   {
-    href: "https://google.com.br",
-    title: "CodeLink",
+    href: "https://github.com/PedroSantiagoDev/hey-professor",
+    title: "Hey Professor Q&A",
     description:
-      "CODELINK: Intranet em Laravel para gestão de notícias, reservas, links e unidades organizacionais.",
-    img: "/project/codelink.png",
-    tags: ["PHP", "Laravel", "MySQL", "LiveWire", "Tailwind"],
+      "Plataforma para professores e alunos gerenciarem perguntas e respostas, promovendo aprendizado interativo com Laravel e Livewire.",
+    img: "/project/hey-professor.png",
+    tags: ["PHP", "Laravel", "MySQL", "Livewire", "Tailwind CSS"],
   },
   {
-    href: "https://google.com.br",
-    title: "CodeLink",
+    href: "https://github.com/PedroSantiagoDev/nodejs-api",
+    title: "API de Cadastro Node.js",
     description:
-      "CODELINK: Intranet em Laravel para gestão de notícias, reservas, links e unidades organizacionais.",
-    img: "/project/codelink.png",
-    tags: ["PHP", "Laravel", "MySQL", "LiveWire", "Tailwind"],
+      "API RESTful escalável para cadastro e gestão de usuários e check-in em academias, desenvolvida com TypeScript, Node.js, Prisma e testes (unitários) em Jest.",
+    img: "/project/nodejs-api.png",
+    tags: ["TypeScript", "Node.js", "PostgreSQL", "Prisma", "Jest"],
+  },
+  {
+    href: "https://github.com/PedroSantiagoDev/dattebayo",
+    title: "Sistema Cadastro Ninjas",
+    description:
+      "Aplicação em Java para gerenciar perfis de ninjas, usando Spring Boot, PostgreSQL e Hibernate para manipulação eficiente de dados.",
+    img: "/project/dattebayo.png",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "Hibernate"],
   },
 ];
 
@@ -319,7 +327,7 @@ export function App() {
               <h2 className="text-xs mb-3 font-normal uppercase tracking-wider">
                 Tecnologias
               </h2>
-              <ul className="grid grid-cols-4 gap-1 sm:grid-cols-7 md:grid-cols-8">
+              <ul className="grid grid-cols-4 gap-2 sm:grid-cols-7 md:grid-cols-8">
                 {techs.map((tech) => (
                   <IconCard
                     key={tech.title}

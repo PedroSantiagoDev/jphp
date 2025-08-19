@@ -23,13 +23,13 @@ export function CarouselCard({ projects }: CarouselCardProps) {
     <Carousel
       opts={{
         align: "start",
-        loop: true,
+        // loop: true,
       }}
       plugins={[AutoPlay({ delay: 3000 })]}
     >
-      <CarouselContent className="-ml-1">
+      <CarouselContent>
         {projects.map((project, index) => (
-          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
             <CarouselComponent {...project} />
           </CarouselItem>
         ))}
