@@ -49,7 +49,7 @@ const currentExperience = [
     enterprise: "Pulse",
     model: "Presencial",
     description:
-      "Desenvolvimento de APIs RESTful com Java e Spring Boot e criação de front-ends dinâmicos com HTML, CSS e JavaScript, aplicando metodologias ágeis e boas práticas de código em projetos reais.",
+      "Participação no programa Jovem Tech, com foco em desenvolvimento back-end. Atuação em projetos práticos envolvendo criação de APIs RESTful com Java e Spring Boot, além de construção de interfaces dinâmicas com HTML, CSS e JavaScript. Aprimoramento de habilidades em bancos de dados relacionais (SQL), metodologias ágeis e boas práticas de código. Também em constante desenvolvimento de soft skills, como comunicação, trabalho em equipe e resolução de problemas.",
     stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
   },
 ];
@@ -231,7 +231,7 @@ export function App() {
                   to={link.href}
                   className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
                 >
-                  <Button variant="link">{link.label}</Button>
+                  <Button variant="link" className="cursor-pointer">{link.label}</Button>
                 </Link>
               ) : (
                 <a
@@ -239,7 +239,7 @@ export function App() {
                   href={link.href}
                   className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
                 >
-                  <Button variant="link">{link.label}</Button>
+                  <Button variant="link" className="cursor-pointer">{link.label}</Button>
                 </a>
               )
             )}
@@ -299,7 +299,7 @@ export function App() {
                   </AvatarFallback>
                 </Avatar>
                 <a href="/curriculo.pdf" target="_blank">
-                  <Button className="flex gap-1 items-center">
+                  <Button className="flex gap-1 items-center cursor-pointer">
                     <FileUser />
                     currículo
                   </Button>

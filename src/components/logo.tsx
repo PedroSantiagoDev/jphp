@@ -8,7 +8,13 @@ export function Logo({ name }: LogoProps) {
   const letters = name.split("");
 
   return (
-    <Link to="/" className="flex items-center gap-1 cursor-pointer">
+    <Link 
+      to="/#home"
+      onClick={() => {
+        const el = document.getElementById("home");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }} 
+      className="flex items-center gap-1 cursor-pointer">
       <img alt="JPHP logo" className="w-12 h-12" src="/logo.png" />
       <div className="overflow-hidden flex cursor-default">
         {letters.map((letter, index) => (

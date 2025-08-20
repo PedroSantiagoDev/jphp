@@ -40,7 +40,7 @@ export function CarouselComponent({
               <p className="text-sm text-zinc-400">{description}</p>
               <div className="flex flex-wrap gap-1 mt-1">
                 {tags.map((tag) => (
-                  <Badge key={tag}>{tag}</Badge>
+                  <Badge variant="outline" key={tag}>{tag}</Badge>
                 ))}
               </div>
             </div>
