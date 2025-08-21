@@ -1,11 +1,5 @@
 import { Logo } from "./components/logo";
 import { ThemeToggle } from "./components/theme-toggle";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
 import { CarouselCard } from "./components/carousel-card";
 import { ExperienceCard } from "./components/experience-card";
@@ -31,6 +25,11 @@ import { PostManIcon } from "./components/icons/postman-icon";
 import { NodejsIcon } from "./components/icons/nodejs-icon";
 import { Link } from "react-router-dom";
 import { LinuxIcon } from "./components/icons/linux-icon";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "./components/ui/tooltip";
 
 const navLinks = [
   { href: "#home", label: "/Home" },
@@ -50,45 +49,15 @@ const currentExperience = [
     model: "Presencial",
     description:
       "Participação no programa Jovem Tech, com foco em desenvolvimento back-end. Atuação em projetos práticos envolvendo criação de APIs RESTful com Java e Spring Boot, além de construção de interfaces dinâmicas com HTML, CSS e JavaScript. Aprimoramento de habilidades em bancos de dados relacionais (SQL), metodologias ágeis e boas práticas de código. Também em constante desenvolvimento de soft skills, como comunicação, trabalho em equipe e resolução de problemas.",
-    stack: ["HTML", "CSS", "JavaScript", "Java", "Spring Boot", "SQL"],
-  },
-];
-
-const previousPositions = [
-  {
-    title: "Desenvolvedor full stack - Freelance",
-    time: "2024 - Atual",
-    pathLogo: "/logo/lamps.jpeg",
-    enterprise: "Lamparinas",
-    model: "Home Office",
-    description:
-      "Atuação no desenvolvimento full-stack com PHP, JavaScript e SQL, com foco na otimização da performance e no fortalecimento da segurança do sistema (prevenção de SQL Injection e CSRF), resultando em melhorias diretas no fluxo de trabalho da equipe e na experiência do usuário",
     stack: [
       "HTML",
       "CSS",
       "JavaScript",
-      "PHP",
-      "SQL Server",
+      "Java",
+      "Spring Boot",
       "SQL",
-      "Jquery",
-      "BootStrap",
-    ],
-  },
-  {
-    title: "Técnico de suporte",
-    time: "2023 - 2025",
-    pathLogo: "/logo/ctc.jpeg",
-    enterprise: "CTC",
-    model: "Presencial",
-    description:
-      "Atuação em suporte nível 2 (N2), com diagnóstico e solução de problemas de hardware e software, desenvolvimento de scripts para automação e implementação de políticas de segurança (backups, permissões), aliando a competência técnica a uma comunicação eficaz com usuários e à habilidade de priorizar demandas em ambientes dinâmicos.",
-    stack: [
-      "Sistemas Operacionais",
-      "Redes de Computadores",
-      "Scripting e Automação",
-      "Diagnóstico de Hardware",
-      "Comunicação Clara e Didática",
-      "Trabalho em Equipe",
+      "Comunicação",
+      "Trabalho Em Equipe",
     ],
   },
 ];
@@ -98,8 +67,7 @@ const projects = [
     href: "https://homolog.aws.eti.br/",
     title: "Intranet CodeLink",
     description:
-      "Plataforma intranet em Laravel para gestão de notícias, reservas, links e unidades organizacionais, otimizando comunicação interna.",
-    img: "/project/codelink.png",
+      "Plataforma intranet em Laravel para gestão de notícias, reservas, links e unidades organizacionais, otimizando comunicação interna. Utilizada por mais de 100 usuários",
     tags: ["PHP", "Laravel", "MySQL", "Livewire", "Tailwind CSS"],
   },
   {
@@ -107,7 +75,6 @@ const projects = [
     title: "Hey Professor Q&A",
     description:
       "Plataforma para professores e alunos gerenciarem perguntas e respostas, promovendo aprendizado interativo com Laravel e Livewire.",
-    img: "/project/hey-professor.png",
     tags: ["PHP", "Laravel", "MySQL", "Livewire", "Tailwind CSS"],
   },
   {
@@ -115,7 +82,6 @@ const projects = [
     title: "API de Cadastro Node.js",
     description:
       "API RESTful escalável para cadastro e gestão de usuários e check-in em academias, desenvolvida com TypeScript, Node.js, Prisma e testes (unitários) em Jest.",
-    img: "/project/nodejs-api.png",
     tags: ["TypeScript", "Node.js", "PostgreSQL", "Prisma", "Jest"],
   },
   {
@@ -123,7 +89,6 @@ const projects = [
     title: "Sistema Cadastro Ninjas",
     description:
       "Aplicação em Java para gerenciar perfis de ninjas, usando Spring Boot, PostgreSQL e Hibernate para manipulação eficiente de dados.",
-    img: "/project/dattebayo.png",
     tags: ["Java", "Spring Boot", "PostgreSQL", "Hibernate"],
   },
 ];
@@ -231,7 +196,9 @@ export function App() {
                   to={link.href}
                   className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
                 >
-                  <Button variant="link" className="cursor-pointer">{link.label}</Button>
+                  <Button variant="link" className="cursor-pointer">
+                    {link.label}
+                  </Button>
                 </Link>
               ) : (
                 <a
@@ -239,7 +206,9 @@ export function App() {
                   href={link.href}
                   className="hover:text-muted-foreground hover:-translate-y-1 transition-all duration-300"
                 >
-                  <Button variant="link" className="cursor-pointer">{link.label}</Button>
+                  <Button variant="link" className="cursor-pointer">
+                    {link.label}
+                  </Button>
                 </a>
               )
             )}
@@ -251,6 +220,7 @@ export function App() {
                 size="icon"
                 variant="outline"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
               >
                 {isMenuOpen ? (
                   <X className="h-5 w-5" />
@@ -293,7 +263,10 @@ export function App() {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex flex-col gap-2 items-center">
                 <Avatar className="w-32 h-32 flex-shrink-0">
-                  <AvatarImage src="/avatar.png" />
+                  <AvatarImage
+                    src="/avatar.png"
+                    alt="Foto de perfil de João Pedro"
+                  />
                   <AvatarFallback className="text-2xl">
                     João Pedro
                   </AvatarFallback>
@@ -306,15 +279,17 @@ export function App() {
                 </a>
               </div>
               <div className="flex-1 space-y-2">
-                <h1 className="text-md md:text-2xl font-bold text-center sm:text-start">
+                <h1 className="text-lg md:text-3xl font-bold text-center sm:text-start">
                   Olá, eu sou João Pedro,
                 </h1>
-                <p className="text-sm md:text-sm text-foreground">
-                  Desenvolvedor com experiência full-stack e paixão por backend,
-                  onde me especializo em Java (Spring Boot) e PHP (Laravel).
-                  Desde 2023, venho atuando em projetos desafiadores para
-                  construir APIs robustas e arquitetar sistemas escaláveis com
-                  uma visão abrangente.
+                <p className="text-sm md:text-base text-foreground">
+                  Sou desenvolvedor desde 2023, focado em backend para
+                  construção de APIs e sistemas escaláveis. Iniciei na
+                  tecnologia como suporte N2, adquirindo habilidades em
+                  resolução de problemas. Busco oportunidades para aplicar
+                  competências e contribuir em projetos relevantes. Além de
+                  programar, compartilho conhecimentos via blog, auxiliando a
+                  comunidade de desenvolvedores.
                 </p>
                 <div className="flex gap-5 items-center">
                   <div className="flex gap-2 text-muted-foreground">
@@ -322,27 +297,50 @@ export function App() {
                     <p className="text-sm md:text-sm">minhas redes:</p>
                   </div>
                   <div className="flex gap-3">
-                    <a
-                      href="https://github.com/PedroSantiagoDev"
-                      target="_blank"
-                      className="hover:-translate-y-1 transition-all duration-300"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/pedro-santiago-lima/"
-                      target="_blank"
-                      className="hover:-translate-y-1 transition-all duration-300"
-                    >
-                      <Linkedin className="w-5 h-5" />
-                    </a>
-                    <a
-                      href="mailto:joaopedrosantiago1103@gmail.com?subject=Contato pelo Portfóli"
-                      target="_blank"
-                      className="hover:-translate-y-1 transition-all duration-300"
-                    >
-                      <Mail className="w-5 h-5" />
-                    </a>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <a
+                          href="https://github.com/PedroSantiagoDev"
+                          target="_blank"
+                          aria-label="GitHub"
+                        >
+                          <Github className="w-5 h-5" />
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Github</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <a
+                          href="https://www.linkedin.com/in/pedro-santiago-lima/"
+                          target="_blank"
+                          aria-label="LinkedIn"
+                        >
+                          <Linkedin className="w-5 h-5" />
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Linkedin</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <a
+                          href="mailto:joaopedrosantiago1103@gmail.com?subject=Oportunidade de Trabalho - Contato via Portfólio"
+                          target="_blank"
+                          aria-label="Enviar e-mail"
+                        >
+                          <Mail className="w-5 h-5" />
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Mail</p>
+                      </TooltipContent>
+                    </Tooltip>
                   </div>
                 </div>
               </div>
@@ -359,18 +357,6 @@ export function App() {
                   <ExperienceCard key={exp.title} experience={exp} />
                 ))}
               </article>
-              <Accordion type="single" collapsible>
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>Cargos anteriores</AccordionTrigger>
-                  <AccordionContent className="space-y-2">
-                    <div>
-                      {previousPositions.map((exp) => (
-                        <ExperienceCard key={exp.title} experience={exp} />
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
             </div>
           </section>
 
@@ -419,7 +405,7 @@ export function App() {
                   <div className="flex items-center gap-2">
                     <img
                       className="w-5 h-5 rounded"
-                      alt="logo da empresa"
+                      alt="Logo da Faculdade ISL Wyden"
                       src="/logo/faculdade.jpeg"
                     />
                     <span className="text-sm font-normal text-black-400 dark:text-black-400">

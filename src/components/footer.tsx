@@ -1,5 +1,6 @@
 import { Logo } from "./logo";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export function Footer() {
   return (
@@ -10,27 +11,50 @@ export function Footer() {
           Copyright © {new Date().getFullYear()} JPHP
         </p>
         <div className="flex gap-3">
-          <a
-            href="https://github.com/PedroSantiagoDev"
-            target="_blank"
-            className="hover:-translate-y-1 transition-all duration-300"
-          >
-            <Github className="w-5 h-5" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/pedro-santiago-lima/"
-            target="_blank"
-            className="hover:-translate-y-1 transition-all duration-300"
-          >
-            <Linkedin className="w-5 h-5" />
-          </a>
-          <a
-            href="mailto:joaopedrosantiago1103@gmail.com?subject=Contato pelo Portfóli"
-            target="_blank"
-            className="hover:-translate-y-1 transition-all duration-300"
-          >
-            <Mail className="w-5 h-5" />
-          </a>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <a
+                href="https://github.com/PedroSantiagoDev"
+                target="_blank"
+                aria-label="GitHub"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Github</p>
+            </TooltipContent>
+          </Tooltip>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <a
+                href="https://www.linkedin.com/in/pedro-santiago-lima/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Linkedin</p>
+            </TooltipContent>
+          </Tooltip>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <a
+                href="mailto:joaopedrosantiago1103@gmail.com?subject=Contato pelo Portfólio"
+                target="_blank"
+                aria-label="Enviar e-mail"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Mail</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </div>
     </footer>

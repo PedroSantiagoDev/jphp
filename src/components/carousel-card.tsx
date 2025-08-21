@@ -13,7 +13,6 @@ interface CarouselCardProps {
     href: string;
     title: string;
     description: string;
-    img: string;
     tags: string[];
   }[];
 }
